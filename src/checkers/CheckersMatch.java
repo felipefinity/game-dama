@@ -1,6 +1,8 @@
 package checkers;
 
 import boardgame.Board;
+import boardgame.Piece;
+import boardgame.Position;
 import checkers.pieces.Lady;
 
 public class CheckersMatch {
@@ -20,6 +22,27 @@ public class CheckersMatch {
 			}
 		}
 		return mat;
+	}
+	
+	public CheckersPiece performCheckersMove(CheckersPosition sourcePosition, CheckersPosition targetPosition) {
+		Position source = sourcePosition.toPosition();
+		Position target = targetPosition.toPosition();
+		validateSourcePosition(source);
+		Piece capturedPiece = makeMove(source,target);
+		return (CheckersPiece)capturedPiece;
+	}
+	
+	private Piece makeMove(Position source, Position target) {
+		Piece p = board.removePiece(source);
+		Piece capturedPiece = board.removePiece(target);
+		board.placePiece(p, target);
+		return capturedPiece;
+	}
+	
+	private void validateSourcePosition(Position position) {
+		if (!board.thereIsAPiece(position)) {
+			throw new CheckersException("There is no piece on source position");
+		}
 	}
 	
 	private void placeNewPiece(char column, int row, CheckersPiece piece) {
