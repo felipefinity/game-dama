@@ -3,7 +3,7 @@ package checkers;
 import boardgame.Board;
 import boardgame.Piece;
 
-public class CheckersPiece extends Piece {
+public abstract class CheckersPiece extends Piece {
 
 	private Color color;
 	
