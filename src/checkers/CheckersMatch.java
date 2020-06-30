@@ -1,7 +1,6 @@
 package checkers;
 
 import boardgame.Board;
-import boardgame.Position;
 import checkers.pieces.Lady;
 
 public class CheckersMatch {
@@ -23,31 +22,35 @@ public class CheckersMatch {
 		return mat;
 	}
 	
+	private void placeNewPiece(char column, int row, CheckersPiece piece) {
+		board.placePiece(piece, new CheckersPosition(column, row).toPosition());
+	}
+	
 	private void initialSetup() {
-		board.placePiece(new Lady(board, Color.BLUE), new Position(0, 1));
-		board.placePiece(new Lady(board, Color.BLUE), new Position(0, 3));
-		board.placePiece(new Lady(board, Color.BLUE), new Position(0, 5));
-		board.placePiece(new Lady(board, Color.BLUE), new Position(0, 7));
-		board.placePiece(new Lady(board, Color.BLUE), new Position(1, 0));
-		board.placePiece(new Lady(board, Color.BLUE), new Position(1, 2));
-		board.placePiece(new Lady(board, Color.BLUE), new Position(1, 4));
-		board.placePiece(new Lady(board, Color.BLUE), new Position(1, 6));
-		board.placePiece(new Lady(board, Color.BLUE), new Position(2, 1));
-		board.placePiece(new Lady(board, Color.BLUE), new Position(2, 3));
-		board.placePiece(new Lady(board, Color.BLUE), new Position(2, 5));
-		board.placePiece(new Lady(board, Color.BLUE), new Position(2, 7));
+		placeNewPiece('b', 8, new Lady(board, Color.BLUE));
+		placeNewPiece('d', 8, new Lady(board, Color.BLUE));
+		placeNewPiece('f', 8, new Lady(board, Color.BLUE));
+		placeNewPiece('h', 8, new Lady(board, Color.BLUE));
+		placeNewPiece('a', 7, new Lady(board, Color.BLUE));
+		placeNewPiece('c', 7, new Lady(board, Color.BLUE));
+		placeNewPiece('e', 7, new Lady(board, Color.BLUE));
+		placeNewPiece('g', 7, new Lady(board, Color.BLUE));
+		placeNewPiece('b', 6, new Lady(board, Color.BLUE));
+		placeNewPiece('d', 6, new Lady(board, Color.BLUE));
+		placeNewPiece('f', 6, new Lady(board, Color.BLUE));
+		placeNewPiece('h', 6, new Lady(board, Color.BLUE));
 		
-		board.placePiece(new Lady(board, Color.RED), new Position(7, 0));
-		board.placePiece(new Lady(board, Color.RED), new Position(7, 2));
-		board.placePiece(new Lady(board, Color.RED), new Position(7, 4));
-		board.placePiece(new Lady(board, Color.RED), new Position(7, 6));
-		board.placePiece(new Lady(board, Color.RED), new Position(6, 1));
-		board.placePiece(new Lady(board, Color.RED), new Position(6, 3));
-		board.placePiece(new Lady(board, Color.RED), new Position(6, 5));
-		board.placePiece(new Lady(board, Color.RED), new Position(6, 7));
-		board.placePiece(new Lady(board, Color.RED), new Position(5, 0));
-		board.placePiece(new Lady(board, Color.RED), new Position(5, 2));
-		board.placePiece(new Lady(board, Color.RED), new Position(5, 4));
-		board.placePiece(new Lady(board, Color.RED), new Position(5, 6));		
+		placeNewPiece('a', 1, new Lady(board, Color.RED));
+		placeNewPiece('c', 1, new Lady(board, Color.RED));
+		placeNewPiece('e', 1, new Lady(board, Color.RED));
+		placeNewPiece('g', 1, new Lady(board, Color.RED));
+		placeNewPiece('b', 2, new Lady(board, Color.RED));
+		placeNewPiece('d', 2, new Lady(board, Color.RED));
+		placeNewPiece('f', 2, new Lady(board, Color.RED));
+		placeNewPiece('h', 2, new Lady(board, Color.RED));
+		placeNewPiece('a', 3, new Lady(board, Color.RED));
+		placeNewPiece('c', 3, new Lady(board, Color.RED));
+		placeNewPiece('e', 3, new Lady(board, Color.RED));
+		placeNewPiece('g', 3, new Lady(board, Color.RED));
 	}
 }
