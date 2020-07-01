@@ -1,6 +1,8 @@
 package application;
 
+import java.util.ArrayList;
 import java.util.InputMismatchException;
+import java.util.List;
 import java.util.Scanner;
 
 import checkers.CheckersException;
@@ -14,10 +16,12 @@ public class Program {
 		
 		Scanner sc = new Scanner(System.in);
 		CheckersMatch checkersMatch = new CheckersMatch();
+		List<CheckersPiece> captured = new ArrayList<>();
+		
 		while (true) {
 			try {
 				UI.clearScreen();
-				UI.printMatch(checkersMatch);
+				UI.printMatch(checkersMatch, captured);
 				System.out.println();
 				System.out.print("Source: ");
 				CheckersPosition source = UI.readCheckersPosition(sc);
@@ -29,7 +33,11 @@ public class Program {
 				System.out.print("Target: ");
 				CheckersPosition target = UI.readCheckersPosition(sc);
 				
-				CheckersPiece capturedPiece = checkersMatch.performCheckersMove(source, target);				
+				CheckersPiece capturedPiece = checkersMatch.performCheckersMove(source, target);	
+				
+				if (capturedPiece != null) {
+					captured.add(capturedPiece);
+				}
 			}
 			catch (CheckersException e) {
 				System.out.println(e.getMessage());

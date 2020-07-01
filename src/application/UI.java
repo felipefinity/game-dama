@@ -1,7 +1,10 @@
 package application;
 
+import java.util.Arrays;
 import java.util.InputMismatchException;
+import java.util.List;
 import java.util.Scanner;
+import java.util.stream.Collectors;
 
 import checkers.CheckersMatch;
 import checkers.CheckersPiece;
@@ -49,8 +52,10 @@ public class UI {
 		}
 	}
 	
-	public static void printMatch(CheckersMatch checkersMatch) {
+	public static void printMatch(CheckersMatch checkersMatch, List<CheckersPiece> captured) {
 		printBoard(checkersMatch.getPieces());
+		System.out.println();
+		printCapturedPieces(captured);
 		System.out.println();
 		System.out.println("Turn : " + checkersMatch.getTurn());
 		System.out.println("Waiting player: " + checkersMatch.getCurrentPlayer());
@@ -94,5 +99,19 @@ public class UI {
 			}
 		}
 		System.out.print(" ");
-	}	
+	}
+	
+	private static void printCapturedPieces(List<CheckersPiece> captured) {
+		List<CheckersPiece> red = captured.stream().filter(x -> x.getColor() == Color.RED).collect(Collectors.toList());
+		List<CheckersPiece> blue = captured.stream().filter(x -> x.getColor() == Color.BLUE).collect(Collectors.toList());
+		System.out.println("Captured pieces:");
+		System.out.print(" Red: ");
+		System.out.print(ANSI_RED);
+		System.out.println(Arrays.toString(red.toArray()));
+		System.out.print(ANSI_RESET);
+		System.out.print("Blue: ");
+		System.out.print(ANSI_BLUE);
+		System.out.println(Arrays.toString(blue.toArray()));
+		System.out.print(ANSI_RESET);
+	}
 }

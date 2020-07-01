@@ -2,6 +2,6 @@ package checkers;
 
 public enum Color {
 
-	BLUE,
-	RED;
+	RED,
+	BLUE;
 }
