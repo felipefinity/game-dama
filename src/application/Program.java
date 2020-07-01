@@ -17,7 +17,7 @@ public class Program {
 		while (true) {
 			try {
 				UI.clearScreen();
-				UI.printBoard(checkersMatch.getPieces());
+				UI.printMatch(checkersMatch);
 				System.out.println();
 				System.out.print("Source: ");
 				CheckersPosition source = UI.readCheckersPosition(sc);

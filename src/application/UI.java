@@ -3,6 +3,7 @@ package application;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
+import checkers.CheckersMatch;
 import checkers.CheckersPiece;
 import checkers.CheckersPosition;
 import checkers.Color;
@@ -46,6 +47,13 @@ public class UI {
 		catch (RuntimeException e) {
 			throw new InputMismatchException("Error reading CheckersPosition. Valid values are from a1 to h8.");
 		}
+	}
+	
+	public static void printMatch(CheckersMatch checkersMatch) {
+		printBoard(checkersMatch.getPieces());
+		System.out.println();
+		System.out.println("Turn : " + checkersMatch.getTurn());
+		System.out.println("Waiting player: " + checkersMatch.getCurrentPlayer());
 	}
 	
 	public static void printBoard(CheckersPiece[][] pieces) {
